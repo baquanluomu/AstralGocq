@@ -24,5 +24,5 @@ jobs:
         run: |
           git config --global user.email "actions@github.com"
           git config --global user.name "GitHub Actions"
-          git merge upstream/dev --no-ff -m "Merge upstream changes"
+          git merge upstream/dev --allow-unrelated-histories --no-ff -m "Merge upstream changes"
           git push origin dev

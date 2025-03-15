@@ -4,7 +4,7 @@ RUN go env -w GO111MODULE=auto \
   && go env -w CGO_ENABLED=0
 
 WORKDIR /build
-COPY ./ .
+COPY ../. .
 
 RUN set -ex \
     && cd /build \

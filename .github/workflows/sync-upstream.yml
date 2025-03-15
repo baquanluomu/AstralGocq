@@ -22,7 +22,10 @@ jobs:
 
       - name: Merge upstream changes
         run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git merge upstream/dev --allow-unrelated-histories --no-ff -m "Merge upstream changes"
-          git push origin dev
+            git config --global user.email "actions@github.com"
+            git config --global user.name "GitHub Actions"
+            git merge upstream/dev --allow-unrelated-histories --no-ff -m "Merge upstream changes" || \
+            git checkout --ours .github/workflows/build_docker_image.yml && \
+            git add .github/workflows/build_docker_image.yml && \
+            git commit -m "Resolve workflow conflict: keep our version"
+            git push origin dev
